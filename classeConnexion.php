@@ -1,6 +1,7 @@
 <?php
 
 include 'classeBase.php';
+// include 'classeInscript.php';
 
 class connexion{
     private $email;
@@ -53,35 +54,50 @@ public function setpasse($passe){
     }
 
 }
-public function connexionPage($db){
+// public function connexionPage($db){
     
-            // On sélectionne les champs email et mot de passe de la table inscription
-            $sql = 'SELECT prenom,nom,telephone,email2, passe2 FROM ` inscription2`';
-            $inscription =  $db->query($sql);
+//             // On sélectionne les champs email et mot de passe de la table inscription
+//             $sql = 'SELECT prenom,nom,telephone,email2, passe2 FROM ` inscription2`';
+//             $inscription =  $db->query($sql);
 
 
-            foreach ($inscription  as  $inscipt):  // début de la boucle
+//             foreach ($inscription  as  $inscipt):  // début de la boucle
 
-                if(($inscipt['email2'] == $this->email) && ($inscipt['passe2'] == $this->passe )){
+//                 if(($inscipt['email2'] == $this->email) && ($inscipt['passe2'] == $this->passe )){
 
-                    echo"Bienvenue sur votre page E-Taxibokko ";
+//                     echo"Bienvenue sur votre page E-Taxibokko ";
 
-                    break;
+//                     break;
                      
 
-                } else{
+//                 } else{
                 
 
-                    echo "veillez vous inscrire";
-                    break;
+//                     echo "veillez vous inscrire";
+//                     break;
 
-                } endforeach ;  // fin de la boucle 
+//                 } endforeach ;  // fin de la boucle 
+// }
+  public function connexionPage($db){
+
+
+        $query = "SELECT * FROM ` inscription2` WHERE email2 = :email2";
+        
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':email2',$this->email);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            // Vérification du mot de passe
+        if ($result && $this->passe=== $result['passe2']) {
+            echo 'Bienvenue sur votre espace de travaille E-Taxibokko.';
+    } 
+    }
+
 }
- 
 
 
-
-}
 // $connexion1 = new connexion("kafoui@gmail.com","kafoirusbfg2345");
 // // $connexion1 = new connexion("maintenantGRE34@gmail.com","Bienvenue999");
 // $connexion1 ->connexionPage($db);

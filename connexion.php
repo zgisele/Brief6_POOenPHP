@@ -1,11 +1,11 @@
 <?php
 
-if(isset($_POST["email"]) && isset($_POST["passe"])){
+if (isset($_POST["Connexion"])){
     $email=$_POST["email"];
     $passe=$_POST["passe"];
     
 
-    if(empty($email)or empty($email)){
+    if(empty($email)or empty($passe)){
 
         echo 'veillez renseigner les champs';//quant les variables sont vides
 
@@ -14,7 +14,7 @@ if(isset($_POST["email"]) && isset($_POST["passe"])){
         include 'classeConnexion.php';
         $connexion1 = new connexion($email,$passe);
         $connexion1 ->connexionPage($db);
-            
+        // echo"Bienvenue sur votre page ";
     }
     
 

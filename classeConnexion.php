@@ -54,30 +54,6 @@ public function setpasse($passe){
     }
 
 }
-// public function connexionPage($db){
-    
-//             // On sélectionne les champs email et mot de passe de la table inscription
-//             $sql = 'SELECT prenom,nom,telephone,email2, passe2 FROM ` inscription2`';
-//             $inscription =  $db->query($sql);
-
-
-//             foreach ($inscription  as  $inscipt):  // début de la boucle
-
-//                 if(($inscipt['email2'] == $this->email) && ($inscipt['passe2'] == $this->passe )){
-
-//                     echo"Bienvenue sur votre page E-Taxibokko ";
-
-//                     break;
-                     
-
-//                 } else{
-                
-
-//                     echo "veillez vous inscrire";
-//                     break;
-
-//                 } endforeach ;  // fin de la boucle 
-// }
     public function connexionPage($db){
 
 

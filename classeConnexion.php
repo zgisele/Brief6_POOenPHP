@@ -78,7 +78,7 @@ public function setpasse($passe){
 
 //                 } endforeach ;  // fin de la boucle 
 // }
-  public function connexionPage($db){
+    public function connexionPage($db){
 
 
         $query = "SELECT * FROM ` inscription2` WHERE email2 = :email2";
@@ -92,6 +92,12 @@ public function setpasse($passe){
             // Vérification du mot de passe
         if ($result && $this->passe=== $result['passe2']) {
             echo 'Bienvenue sur votre espace de travaille E-Taxibokko.';
+
+            
+           
+            include('Listes_connect.php');
+            // header('Location: Listes_connect.php'); 
+            // exit;
     } 
     }
 
